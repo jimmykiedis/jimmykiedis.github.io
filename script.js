@@ -1,4 +1,4 @@
-let = Images = [
+let imagens = [
     "contents/roll1.png",
     "contents/roll2.png",
     "contents/roll3.png",
@@ -8,24 +8,24 @@ let = Images = [
 let indice = 0;
 
 function atualizarImagem() {
-    const img = document.getElementById('imagemCarrossel')
-    const polaroid = document.querySelector('.polariod');
+    const img = document.getElementById("imagemCarrossel");
+    const polaroid = document.querySelector(".polaroid");
 
-    img.src = Images[indice];
-    polaroid.classList.remove('revelada');
+    img.src = imagens[indice];
+    polaroid.classList.remove("revelado");
 }
 
 function avancarImagem() {
-    indice = (indice + 1) % Images.length;
+    indice = (indice + 1) % imagens.length;
     atualizarImagem();
 }
 
 function voltarImagem() {
-    indice = (indice - 1 + Images.length) % Images.length;
+    indice = (indice - 1 + imagens.length) % imagens.length;
     atualizarImagem();
 }
 
 function revelarImagem() {
-    const polaroid = document.querySelector('.polariod');
-    polaroid.classList.add('revelada');
+    const polaroid = document.querySelector(".polaroid");
+    polaroid.classList.add("revelado");
 }

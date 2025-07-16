@@ -19,7 +19,7 @@ h1 {
     gap: 20px;
 }
 
-.polariod {
+.polaroid {
     width: 300px;
     height: 360px;
     background-color: white;
@@ -50,7 +50,7 @@ h1 {
     transition: filter 1s;
 }
 
-.polariod.revelado img {
+.polaroid.revelado img {
     filter: brightness(1);
 }
 
