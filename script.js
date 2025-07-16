@@ -8,7 +8,11 @@ let = Images = [
 let indice = 0;
 
 function atualizarImagem() {
-    document.getElementById('imagemCarrossel').src = Images[indice];
+    const img = document.getElementById('imagemCarrossel')
+    const polaroid = document.querySelector('.polariod');
+
+    img.src = Images[indice];
+    polaroid.classList.remove('revelada');
 }
 
 function avancarImagem() {
