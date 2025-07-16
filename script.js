@@ -1,8 +1,25 @@
+const audio = document.getElementById("musica");
+const playPauseBtn = document.querySelector(".playPauseBtn");
+
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = "⏸️";
+    } else {
+        audio.pause();
+        playPauseBtn.textContent = "▶️";
+    }
+}
+
+audio.addEventListener("ended", () => {
+    playPauseBtn.textContent = "▶️";
+});
+
 let imagens = [
-    "contents/roll1.png",
-    "contents/roll2.png",
-    "contents/roll3.png",
-    "contents/roll4.png"
+    "contents/img/roll1.png",
+    "contents/img/roll2.png",
+    "contents/img/roll3.png",
+    "contents/img/roll4.png"
 ];
 
 let indice = 0;

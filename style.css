@@ -55,6 +55,29 @@ h1 {
     transition: filter 2s ease;
 }
 
+.music-player {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+#playPauseBtn {
+    background-color: #333;
+    color: white;
+    font-size: 28px;
+    border: none;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#playPauseBtn:hover {
+    background-color: #555;
+}
+
 button {
     padding: 10px 15px;
     font-size: 24px;

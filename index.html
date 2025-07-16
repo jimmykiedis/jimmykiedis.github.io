@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="music-player">
+        <button class="playPauseBtn" onclick="toggleMusic()">▶️</button>
+        <audio id="musica" src="contents/sound/music.mp3"></audio>
+    </div>
+
     <h1>📸 Retrospectiva 📸</h1>
 
     <div class="centraliza">
@@ -14,7 +19,7 @@
 
         <div class="polaroid" onclick="revelarImagem()">
             <div class="foto">
-                <img id='imagemCarrossel' src="contents/roll1.png" alt="Imagem polaroid">
+                <img id='imagemCarrossel' src="contents/img/roll1.png" alt="Imagem polaroid">
             </div>    
         </div>
 
