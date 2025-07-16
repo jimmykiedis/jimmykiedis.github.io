@@ -1,3 +1,22 @@
-function mostrarMensagem() {
-    alert("Você clicou no botão! 🚀");
+let = Images = [
+    "contents/roll1.png",
+    "contents/roll2.png",
+    "contents/roll3.png",
+    "contents/roll4.png"
+];
+
+let indice = 0;
+
+function atualizarImagem() {
+    document.getElementById('imagemCarrossel').src = Images[indice];
+}
+
+function avancarImagem() {
+    indice = (indice + 1) % Images.length;
+    atualizarImagem();
+}
+
+function voltarImagem() {
+    indice = (indice - 1 + Images.length) % Images.length;
+    atualizarImagem();
 }
