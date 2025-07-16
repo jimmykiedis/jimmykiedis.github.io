@@ -24,3 +24,8 @@ function voltarImagem() {
     indice = (indice - 1 + Images.length) % Images.length;
     atualizarImagem();
 }
+
+function revelarImagem() {
+    const polaroid = document.querySelector('.polariod');
+    polaroid.classList.add('revelada');
+}
