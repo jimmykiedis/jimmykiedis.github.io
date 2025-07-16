@@ -47,11 +47,12 @@ h1 {
     height: 100%;
     object-fit: cover;
     filter: brightness(0);
-    transition: filter 1s;
+    transition: none; /* sem transição ao trocar */
 }
 
 .polaroid.revelado img {
     filter: brightness(1);
+    transition: filter 2s ease;
 }
 
 button {

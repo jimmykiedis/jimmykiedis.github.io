@@ -11,8 +11,20 @@ function atualizarImagem() {
     const img = document.getElementById("imagemCarrossel");
     const polaroid = document.querySelector(".polaroid");
 
-    img.src = imagens[indice];
+    // Remover classe "revelado" imediatamente
     polaroid.classList.remove("revelado");
+
+    // Resetar o estilo de transição e filtro da imagem
+    img.style.transition = "none";
+    img.style.filter = "brightness(0)";
+
+    // Atualiza a imagem
+    img.src = imagens[indice];
+
+    // Pequeno delay para reaplicar a transição
+    setTimeout(() => {
+        img.style.transition = "filter 2s ease";
+    }, 30); // 30ms é o bastante pro navegador aplicar o filtro imediatamente
 }
 
 function avancarImagem() {
