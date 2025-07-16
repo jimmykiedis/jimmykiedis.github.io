@@ -37,4 +37,25 @@ Este projeto foi feito com o coração ❤️ para ser um **presente interativo 
 ---
 
 ## 💡 Exemplo de estrutura
+📁 seu-projeto/
+├── index.html
+├── style.css
+├── script.js
+└── contents/
+├── roll1.png
+├── roll2.png
+├── music.mp3 (opcional)
+
+
+---
+
+## ❤️ Dica especial
+
+> Se o amor fosse código, esse projeto seria um commit inesquecível no repositório do coração. 💾💘
+
+---
+
+## 📄 Licença
+
+Sinta-se à vontade para usar, editar e compartilhar! Espalhe amor por onde for. 💞
 
