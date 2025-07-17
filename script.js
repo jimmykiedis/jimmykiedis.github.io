@@ -15,14 +15,18 @@ audio.addEventListener("ended", () => {
     playPauseBtn.textContent = "▶️";
 });
 
-let imagens = [
-    "contents/img/roll1.png",
-    "contents/img/roll2.png",
-    "contents/img/roll3.png",
-    "contents/img/roll4.png"
-];
-
+let imagens = [];
 let indice = 0;
+
+fetch("contents/assets/lista.json")
+  .then(res => res.json())
+  .then(dados => {
+    imagens = dados;
+    atualizarImagem(); // mostra a primeira imagem assim que carregar
+  })
+  .catch(err => {
+    console.error("Erro ao carregar lista de imagens:", err);
+  });
 
 function atualizarImagem() {
     const img = document.getElementById("imagemCarrossel");
