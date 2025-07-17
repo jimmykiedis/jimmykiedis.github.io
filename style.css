@@ -22,23 +22,22 @@ h1 {
 .polaroid {
     width: 300px;
     height: 360px;
-    background-color: white;
+    background-color: rgb(255, 255, 255); /* cor da moldura polaroid da foto */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    flex-shrink: 0;
-    border-radius: 4px;
+    padding: 10px;  /* cria o espaço interno entre a moldura polaroid e a foto, ou seja, uma afastamento pra dentro */
+    display: flex;  /* organiza a div polaroid com seus filhos de forma que não sobreponham-se */
+    flex-direction: column; /* organiza os filhos da div polaroid em uma coluna, uma a baixo da outra */
+    justify-content: flex-start;    /* coloca todos os filhos da div polaroid no topo sobrepondo-se */
+    align-items: center;    /* centraliza os filhos da div polaroid horizontalmente */
+    position: relative; /* permite posicionar elementos internos (como legenda) em relação à moldura polaroid da foto */
+    cursor: pointer;    /* cursor de mãozinha para indicar que a moldura polaroid é clicável */
+    flex-shrink: 0; /* impede que a moldura 'polaroid' encolha */
 }
 
 .foto {
     width: 100%;
     height: 80%;
-    overflow: hidden;
+    overflow: hidden;   /* garante que a imagem fique dentro do quadrado (moldura) do .foto */
     border-radius: 3px;
 }
 
