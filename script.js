@@ -15,33 +15,45 @@ audio.addEventListener("ended", () => {
     playPauseBtn.textContent = "▶️";
 });
 
-// Depois que você carregar a lista (ex: do JSON):
-let imagens = [];    // Sua lista com nomes corretos, cria uma lista de imagens
-let indice = 0;         //inicializa a o indicie 0 na lista de imagens
+let textos = []; // Lista para armazenar as legendas
+let imagens = []; // Lista para armazenar as imagens
+let indice = 0;   // Índice atual
 
-// Na inicialização
-document.getElementById("imagemCarrossel").src = imagens[indice];
+function carregarTexto() {
+    return fetch('contents/src/text.txt')
+        .then(res => res.text())
+        .then(texto => {
+            textos = texto.split(/\r?\n---\r?\n/).map(l => l.trim());
+        })
+        .catch(err => {
+            console.error("Erro ao carregar o texto: ", err);
+        });
+}
 
-fetch("contents/assets/lista.json")     // abre a lista em json criada pelo script python
-  .then(res => res.json())              // aqui a gente converte o json em um objeto javascript
-  .then(dados => {                      // atribui o objeto javascript a variável da lista de imagens
-    imagens = dados;
-    atualizarImagem(); // mostra a primeira imagem assim que carregar
-  })
-  .catch(err => {                       // se der erro, avisa no console
-    console.error("Erro ao carregar lista de imagens:", err);
-  });
+function atualizarTexto() {
+    const textDiv = document.getElementById("texto");
+    textDiv.textContent = textos[indice] || '';
+}
 
 function atualizarImagem() {
     const img = document.getElementById("imagemCarrossel");
     const polaroid = document.querySelector(".polaroid");
 
-    // Remove a classe que revela a imagem
     polaroid.classList.remove("revelado");
-
-    // Atualiza a imagem
     img.src = imagens[indice];
+    atualizarTexto();
 }
+
+// Inicialização: carregar imagens e textos antes de mostrar qualquer coisa
+Promise.all([
+    fetch("contents/assets/lista.json").then(res => res.json()).then(dados => imagens = dados),
+    carregarTexto()
+]).then(() => {
+    atualizarImagem();
+}).catch(err => {
+    console.error("Erro ao carregar arquivos:", err);
+});
+
 
 function avancarImagem() {
     indice = (indice + 1) % imagens.length;

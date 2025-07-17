@@ -61,6 +61,18 @@ h1 {
     padding-top: 8px;
 }
 
+.texto {
+    margin-top: 12px;
+    color: #444;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    text-align: center;
+    user-select: none;
+    max-width: 300px; /* alinhado com a largura da polaroid */
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .music-player {
     position: absolute;
     top: 70px;
