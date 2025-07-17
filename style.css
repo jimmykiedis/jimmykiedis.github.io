@@ -54,6 +54,13 @@ h1 {
     transition: filter 2s ease;
 }
 
+.legenda {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    padding-top: 8px;
+}
+
 .music-player {
     position: absolute;
     top: 70px;
