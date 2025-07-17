@@ -1,4 +1,8 @@
 body {
+    background: linear-gradient(to bottom,
+        #e6e6e6 0%, 
+        #eedada 70%, 
+        #d496c3 100%);
     margin: 0;
     padding: 0;
     background-color: #e6e6e6;
@@ -64,6 +68,7 @@ h1 {
 
 .texto {
     margin-top: 12px;
+    background: #eedada;
     color: #444;
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
