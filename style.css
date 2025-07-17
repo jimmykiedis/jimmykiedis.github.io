@@ -4,12 +4,13 @@ body {
     background-color: #e6e6e6;
     font-family: sans-serif;
     text-align: center;
+    margin: 0;
+    overflow: hidden;
 }
 
 h1 {
     margin: 20px 0;
 }
-
 /* Só essa div vai centralizar o conteúdo */
 .centraliza {
     display: flex;
@@ -73,7 +74,7 @@ h1 {
     margin-right: auto;
 }
 
-.music-player {
+.musicPlayer {
     position: absolute;
     top: 70px;
     left: 50%;
