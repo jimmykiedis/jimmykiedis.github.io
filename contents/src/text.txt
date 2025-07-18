@@ -1,7 +1,7 @@
-Primeiro texto da foto 1 
+Quarto texto da foto 1
 ---
-Segundo texto da foto 2 
+Quarto texto da foto 2
 ---
-Terceiro texto da foto 3 
+Quarto texto da foto 3
 ---
 Quarto texto da foto 4 
