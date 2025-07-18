@@ -82,18 +82,28 @@ h1 {
 }
 
 #texto {
-    opacity: 0; /* texto invisível inicialmente */
-    transition: opacity 0.5s ease; /* transição suave para mostrar o texto */
-    margin-top: 12px;
-    background: #eedada; /* cor de fundo do texto */
+    opacity: 0; 
+    transition: opacity 0.5s ease;
+    display: flex; /* ATIVA o flexbox pra alinhar verticalmente */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 80%; /* MESMA ALTURA da .foto */
+    width: 100%; /* largura total da polaroid */
+    
+    position: absolute; /* sobrepõe a imagem */
+    top: 10px; /* alinhado com padding da polaroid */
+    left: 0;
+
+    background: #ffffff;
     color: #363636;
     font-family: 'Yellowtail', 'Courier New', Courier, monospace;
     font-size: 14px;
     text-align: center;
-    user-select: none; /* impede a seleção do texto */
-    max-width: 300px; /* alinhado com a largura da polaroid */
-    margin-left: auto; /* centraliza horizontalmente */
-    margin-right: auto; /* centraliza horizontalmente */
+    user-select: none;
+    padding: 10px;
+    box-sizing: border-box; /* padding conta dentro do tamanho */
 }
 
  /*
