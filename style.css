@@ -1,18 +1,19 @@
 body {
-    background: linear-gradient(to bottom, /* cria o backgroun em gradiente */
+    background: linear-gradient(to bottom,
         #e6e6e6 0%, 
         #e0b6b6 70%, 
         #f59393 100%);
-    margin: 0;  /* remove a margem padrão do body */
-    padding: 0; /* remove o padding padrão do body */
-    background-color: #e6e6e6;  
+    margin: 0;
+    padding: 0;
+    background-color: #e6e6e6;
     font-family: sans-serif;
     text-align: center;
-    margin: 0;
-    overflow: hidden; /* impede a barra de rolagem */
-    user-select: none; /* impede a seleção do texto */
-}
+    overflow: hidden;
+    user-select: none;
 
+    position: relative; /* importante pro absolute da legenda funcionar */
+    height: 100vh; /* força ocupar a altura inteira da tela */
+}
 h1 {
     margin: 20px 0;
     font-family: 'Pacifico', sans-serif;
@@ -74,12 +75,23 @@ h1 {
 }
 
 .legenda {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    
     text-align: center;
     font-family: 'Pacifico', 'Courier New', Courier, monospace;
     font-size: 14px;
-    padding-top: 25px;
-    user-select: none; /* impede a seleção do texto */
+    padding: 5px 10px;
+    user-select: none;
+
+    background-color: rgba(255, 255, 255, 0.8); /* leve fundo para contraste */
+    border-radius: 8px;
+    max-width: 90vw;
+    z-index: 10;
 }
+
 
 #texto {
     opacity: 0; 
@@ -123,7 +135,7 @@ h1 {
 
 .musicPlayer {
     position: absolute;
-    top: 70px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
