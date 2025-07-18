@@ -1,5 +1,7 @@
 const audio = document.getElementById("musica");    // obtém do html um elemento com id "musica"
 const playPauseBtn = document.querySelector(".playPauseBtn");   // obtém do html um elemento com a classe "playPauseBtn"
+const polaroid = document.querySelector(".polaroid");
+let startX = 0;
 let textos = []; // cria a lista para armazenar as legendas
 let imagens = []; // cria a lista para armazenar as imagens
 let indice = 0;   // cria um índice para controlar a imagem e o texto atual
@@ -25,26 +27,26 @@ function atualizarTexto() {
 // busca-se um elemento no html com a id "fotosPolaroid" e atualiza o src da imagem com a imagem correspondente ao índice atual
 function atualizarImagem() {
     const img = document.getElementById("fotosPolaroid");   // id "fotosPolaroid" é colocado em img
-    const polaroid = document.querySelector(".polaroid");   // class "polaroid" é colocada em polaroid
-
-    polaroid.classList.remove("revelado");                  // remove a classe "revelado" da polaroid para que a foto atual não apareça revelada
     img.src = imagens[indice];                              // o src da imagem é atualizada com o vetor de imagens com o indice atual
     atualizarTexto();                                       //chama a função de atualizar o texto    
 }
 
 // busca-se um elemento no html com classe "polaroid" e adiciona a classe css revelado nesse elemento
 function revelarImagem() {
-    const polaroid = document.querySelector(".polaroid");
     polaroid.classList.add("revelado");
 }
 
 function avancarImagem() {
     indice = (indice + 1) % imagens.length;
+    polaroid.classList.remove("revelado"); // remove a revelação
+    void polaroid.offsetWidth; // força reflow (reset da animação)
     atualizarImagem();
 }
 
 function voltarImagem() {
     indice = (indice - 1 + imagens.length) % imagens.length;
+    polaroid.classList.remove("revelado");
+    void polaroid.offsetWidth;
     atualizarImagem();
 }
 
@@ -64,6 +66,25 @@ audio.addEventListener("ended", () => {
     playPauseBtn.textContent = "▶️";
 });
 
+// inicio do toque ou clique
+function onStart(e) {
+    startX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX; // obtém a posição inicial do toque ou clique
+}
+
+function onEnd(e) {
+    const endX = e.type.includes("touch") ? e.changedTouches[0].clientX : e.clientX; // obtém a posição final do toque ou clique
+    const deltaX = endX - startX; // calcula a diferença entre a posição final e inicial
+
+    if (Math.abs(deltaX) > 50) { // se a diferença for maior que 50 pixels
+        if (deltaX > 0) {
+            voltarImagem(); // se a diferença for positiva, volta a imagem
+        }
+        else {
+            avancarImagem(); // se a diferença for negativa, avança a imagem
+        }
+    }
+}
+
 // Inicialização: carregar imagens e textos antes de mostrar qualquer coisa
 Promise.all([
     fetch("contents/assets/lista.json").then(res => res.json()).then(dados => imagens = dados), // carrega a lista de imagens da lista.json
@@ -73,3 +94,9 @@ Promise.all([
 }).catch(err => {
     console.error("Erro ao carregar arquivos:", err);       // caso ocorra algum erro, exibe no console
 });
+
+// Adiciona os eventos de toque e clique para avançar e voltar as imagens
+polaroid.addEventListener("mousedown", onStart);
+polaroid.addEventListener("mouseup", onEnd);
+polaroid.addEventListener("touchstart", onStart);
+polaroid.addEventListener("touchend", onEnd);
