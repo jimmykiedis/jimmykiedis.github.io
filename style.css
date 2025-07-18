@@ -10,6 +10,7 @@ body {
     text-align: center;
     margin: 0;
     overflow: hidden; /* impede a barra de rolagem */
+    user-select: none; /* impede a seleção do texto */
 }
 
 h1 {
@@ -77,6 +78,7 @@ h1 {
     font-family: 'Pacifico', 'Courier New', Courier, monospace;
     font-size: 14px;
     padding-top: 25px;
+    user-select: none; /* impede a seleção do texto */
 }
 
 #texto {
