@@ -28,6 +28,7 @@ h1 {
 .polaroid {
     width: 300px;
     height: 360px;
+    perspective: 1000px;
     background-color: rgb(255, 255, 255); /* cor da moldura polaroid da foto */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     padding: 10px;  /* cria o espaço interno entre a moldura polaroid e a foto, ou seja, uma afastamento pra dentro */
@@ -60,6 +61,16 @@ h1 {
     transition: filter 2s ease;
 }
 
+.polaroid.virada .foto img {
+    opacity: 0; /* esconde a imagem quando a polaroid está virada */
+    transition: opacity 0.5s ease; /* transição suave para esconder a imagem */
+}
+
+.polaroid.virada #texto {
+    opacity: 1; /* mostra o texto quando a polaroid está virada */
+    transition: opacity 0.5s ease; /* transição suave para mostrar o texto */
+}
+
 .legenda {
     text-align: center;
     font-family: 'Pacifico', 'Courier New', Courier, monospace;
@@ -67,7 +78,23 @@ h1 {
     padding-top: 25px;
 }
 
-.texto {
+#texto {
+    opacity: 0; /* texto invisível inicialmente */
+    transition: opacity 0.5s ease; /* transição suave para mostrar o texto */
+    margin-top: 12px;
+    background: #eedada; /* cor de fundo do texto */
+    color: #363636;
+    font-family: 'Yellowtail', 'Courier New', Courier, monospace;
+    font-size: 14px;
+    text-align: center;
+    user-select: none; /* impede a seleção do texto */
+    max-width: 300px; /* alinhado com a largura da polaroid */
+    margin-left: auto; /* centraliza horizontalmente */
+    margin-right: auto; /* centraliza horizontalmente */
+}
+
+ /*
+ .texto {
     margin-top: 12px;
     background: #eedada;
     color: #363636;
@@ -75,10 +102,11 @@ h1 {
     font-size: 14px;
     text-align: center;
     user-select: none;
-    max-width: 300px; /* alinhado com a largura da polaroid */
+    max-width: 300px; /* alinhado com a largura da polaroid 
     margin-left: auto;
     margin-right: auto;
-}
+} 
+*/
 
 .musicPlayer {
     position: absolute;

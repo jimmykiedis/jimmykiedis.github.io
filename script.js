@@ -2,6 +2,7 @@ const audio = document.getElementById("musica");    // obtém do html um element
 const playPauseBtn = document.querySelector(".playPauseBtn");   // obtém do html um elemento com a classe "playPauseBtn"
 const polaroid = document.querySelector(".polaroid");
 let startX = 0;
+let startY = 0;
 let textos = []; // cria a lista para armazenar as legendas
 let imagens = []; // cria a lista para armazenar as imagens
 let indice = 0;   // cria um índice para controlar a imagem e o texto atual
@@ -68,19 +69,30 @@ audio.addEventListener("ended", () => {
 
 // inicio do toque ou clique
 function onStart(e) {
-    startX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX; // obtém a posição inicial do toque ou clique
+    const point = e.type.includes("touch") ? e.touches[0] : e;
+    startX = point.clientX;
+    startY = point.clientY;
 }
 
 function onEnd(e) {
-    const endX = e.type.includes("touch") ? e.changedTouches[0].clientX : e.clientX; // obtém a posição final do toque ou clique
-    const deltaX = endX - startX; // calcula a diferença entre a posição final e inicial
+    const point = e.type.includes("touch") ? e.changedTouches[0] : e;
+    const deltaX = point.clientX - startX;
+    const deltaY = startY - point.clientY;
 
-    if (Math.abs(deltaX) > 50) { // se a diferença for maior que 50 pixels
-        if (deltaX > 0) {
-            voltarImagem(); // se a diferença for positiva, volta a imagem
+    // Prioriza o movimento mais dominante (horizontal ou vertical)
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (Math.abs(deltaX) > 50) {
+            deltaX > 0 ? voltarImagem() : avancarImagem();
         }
-        else {
-            avancarImagem(); // se a diferença for negativa, avança a imagem
+    } else {
+        if (Math.abs(deltaY) > 50) {
+            if (deltaY > 0) {
+                // Arrastou pra cima → virar para o verso (texto)
+                polaroid.classList.add("virada");
+            } else {
+                // Arrastou pra baixo → voltar à imagem
+                polaroid.classList.remove("virada");
+            }
         }
     }
 }
