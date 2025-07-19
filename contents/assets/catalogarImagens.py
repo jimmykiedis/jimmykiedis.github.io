@@ -5,7 +5,7 @@ import json
 BASE_DIR = os.path.dirname(__file__)  # Pasta onde o .py está
 IMAGEM_DIR = os.path.join(BASE_DIR, "..", "img")
 
-EXTENSOES_VALIDAS = (".png", ".jpg", ".jpeg", ".webp")
+EXTENSOES_VALIDAS = (".png", ".jpg", ".jpeg", ".webp", ".heic")
 
 # Pega todos os arquivos válidos
 imagens = sorted([
