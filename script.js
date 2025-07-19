@@ -7,6 +7,24 @@ let textos = []; // cria a lista para armazenar as legendas
 let imagens = []; // cria a lista para armazenar as imagens
 let indice = 0;   // cria um índice para controlar a imagem e o texto atual
 
+function criarCoraçao() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 10 + 10 + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000); // remove após cair
+}
+
+
+
+
 // trata a criação do vetor de textos, que são separados por "---" no arquivo text.txt
 function carregarTexto() {
     return fetch('contents/src/text.txt')   // busca em contents/src o arquivo text.txt
@@ -112,3 +130,5 @@ polaroid.addEventListener("mousedown", onStart);
 polaroid.addEventListener("mouseup", onEnd);
 polaroid.addEventListener("touchstart", onStart);
 polaroid.addEventListener("touchend", onEnd);
+// Gera um novo coração a cada 300ms
+setInterval(criarCoraçao, 300);

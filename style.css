@@ -15,6 +15,23 @@ body {
     height: 100vh; /* força ocupar a altura inteira da tela */
 }
 
+.heart {
+    position: fixed;
+    top: -10px;
+    font-size: 16px;
+    color: #ff6b81;
+    animation: fall 5s linear infinite;
+    z-index: 0; /* fica no fundo */
+    user-select: none;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
 
 h1 {
     margin: 20px 0;
