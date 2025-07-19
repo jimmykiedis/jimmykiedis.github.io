@@ -24,6 +24,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    perspective: 1000px;
     height: 73vh;
     gap: 5px;
 }
